@@ -1,19 +1,20 @@
-function almostIncreasingSequence(sequence) { 
+function almostIncreasingSequence(sequence) {
   if (sequence.length == 1) {
     return true;
   };
-  for (i=0; i<sequence.length-1; i++) {
+  
+  for (i = 0; i < sequence.length - 1; i++) {
     console.log(sequence[i]);
-    if (sequence[i] >= sequence[i+1]) {
-      const newSequence = sequence.splice(i,1);
+    if (sequence[i] >= sequence[i + 1]) {
+      const newSequence = sequence.splice(i, 1);
       console.log(newSequence);
-      for (j=i; j<newSequence.length-1; j++) {
+      for (j = i; j < newSequence.length - 1; j++) {
         console.log(newSequence);
-        if (sequence[j] >= sequence[j+1]) {
+        if (sequence[j] >= sequence[j + 1]) {
           return false;
         }
       }
-    } 
+    }
   }
   return true
 }
