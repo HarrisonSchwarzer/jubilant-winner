@@ -1,18 +1,19 @@
 function almostIncreasingSequence(sequence) {
-  if (sequence.length == 1) {
-    return true;
-  };
-  
-  for (i = 0; i < sequence.length - 1; i++) {
-    console.log(sequence[i]);
-    if (sequence[i] >= sequence[i + 1]) {
-      const newSequence = sequence.splice(i, 1);
-      console.log(newSequence);
-      for (j = i; j < newSequence.length - 1; j++) {
-        console.log(newSequence);
-        if (sequence[j] >= sequence[j + 1]) {
-          return false;
-        }
+  console.log('Oh boy! Look at this array:', sequence);
+  console.log(`It's ${sequence.length} elements long!`);
+  if (sequence.length == 2) {
+    return true
+  }
+  let baddies = 0;
+  for (i=0; i<sequence.length; i++) {
+    if (baddies > 1) {
+      return false
+    }
+    if (sequence[i] <= sequence[i-1]) {
+      console.log(`I caught one at index ${i}! Take a look:`, sequence[i], sequence[i-1]);
+      baddies += 1;
+      if (sequence[i+1] <= sequence[i-1]) {
+        return false
       }
     }
   }
@@ -20,33 +21,6 @@ function almostIncreasingSequence(sequence) {
 }
 
 console.log(
-  almostIncreasingSequence([1, 2, 2, 3, 1, 4, 2, 1])
+  almostIncreasingSequence([1, 3, 5, 3, 5])
 );
 
-
-// function almostIncreasingSequence(sequence) {
-//   if (sequence.length == 1) {
-//     return true;
-//   }
-//   for (i = 1; i < sequence.length; i++) {
-//     if (i == 0) {
-//       continue;
-//     }
-//     if (sequence[i] < sequence[i-1]) {
-//       sequence.splice(i,1)
-//       for (i = 1; i < sequence.length; i++) {
-//         console.log(sequence);
-//         if (sequence[i] < sequence[i-1] ) {
-//           console.log(sequence[i]);
-//           console.log(sequence[i-1]);
-//           return false;
-//         } 
-//         if (i == sequence.length - 1) {
-//           console.log(sequence[i]);
-//           console.log(sequence[i-1]);
-//           return true
-//         }
-//       }
-//     }
-//   }
-// }
